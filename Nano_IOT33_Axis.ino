@@ -34,7 +34,7 @@ const char *telemetryRollUUID = "A8425BD8-0271-47BB-BF52-63F950AC9E3F";
 const char *telemetryYawUUID = "4FAF0DFA-CDCA-4826-8091-88F53ACC1763";
 const char *telemetryRssiUUID = "7B8F7EBC-DA64-4105-9EBA-04526091DAD6";
 const char *telemetryResetUUID = "FC98DA0E-EEDB-4814-9215-0C05E3FB5389";
-const String companyName = "____Witness Equipment";                     // Bluetooth LE 1.4 Manufacturer Specific Data
+const String companyName = "________Witness Equipment";                     // Bluetooth LE 1.4 Manufacturer Specific Data - https://github.com/pauldemarco/flutter_blue/issues/102
 const char *unitName = "Axis";
 const char *productName = "Inclinometer";
 const char *broadcastName = "Axis Inclinometer";
@@ -659,10 +659,7 @@ void telemetryResetCharacteristicWriteHandler(BLEDevice central, BLECharacterist
     Serial.println(telemetryResetCharacteristic.value());
   }
   resetState = telemetryResetCharacteristic.value();
-  Serial.print("Reset event captured!... ");
-  Serial.println(resetState);
   if(telemetryResetCharacteristic.value() == 1) {
-    Serial.println("Resetting measurements!");
     resetMeasurements();
   }
 }
